@@ -3,10 +3,11 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
   Explore-GitHub-Actions:
-    runs-on: self-hosted[linux, unix]
+    runs-on: ${{ matrix.runner }}
     strategy:
       matrix:
-        runner-selection: random
+        runner: [ linux, unix ]
+        runner-selection: ${{ random }}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
